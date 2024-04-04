@@ -1,20 +1,15 @@
 const sumAll = function(firstNumber, lastNumber) {
-    let sum = 0;
-    
-    if (firstNumber < 0 || lastNumber < 0) {
-        return "ERROR";
-    } else if (typeof(firstNumber) !== 'number' || typeof(lastNumber) !== 'number') {
-        return 'ERROR'
+    if (firstNumber < 0 || lastNumber < 0) return "ERROR";
+    if (!Number.isInteger(firstNumber) || !Number.isInteger(lastNumber)) return 'ERROR'
+    if (firstNumber > lastNumber) {
+        const temp = firstNumber;
+        firstNumber = lastNumber;
+        lastNumber = temp;
     }
-    
-    if (firstNumber < lastNumber ){
-        for (let i = firstNumber; i <= lastNumber; i++) {
-            sum += i;
-        }
-    }else if (firstNumber > lastNumber) {
-        for (let i = firstNumber; i >= lastNumber; i--) {
-            sum += i;
-        }
+
+    let sum = 0; 
+    for (i = firstNumber; i <= lastNumber; i++) {
+        sum += i;
     }
     return sum;
 };
